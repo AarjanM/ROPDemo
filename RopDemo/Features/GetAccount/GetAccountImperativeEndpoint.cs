@@ -2,9 +2,9 @@ using RopDemo.Domain;
 using RopDemo.Intrastructure.Data;
 using RopDemo.SharedKernel.Endpoints;
 
-namespace RopDemo.Features;
+namespace RopDemo.Features.GetAccount;
 
-internal sealed class ImperativeGetAccount : IEndpoint
+internal sealed class GetAccountImperativeEndpoint : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
@@ -17,7 +17,7 @@ internal sealed class ImperativeGetAccount : IEndpoint
                         ? Results.Ok(account)
                         : Results.NotFound();
                 })
-            .WithName(nameof(ImperativeGetAccount))
+            .WithName(nameof(GetAccountImperativeEndpoint))
             .WithDisplayName("Get an account the imperative way.")
             .WithTags("Imperative")
             .Produces<Account>()

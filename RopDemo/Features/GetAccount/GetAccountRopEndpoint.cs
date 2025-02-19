@@ -2,9 +2,9 @@ using RopDemo.Domain;
 using RopDemo.Intrastructure.Data;
 using RopDemo.SharedKernel.Endpoints;
 
-namespace RopDemo.Features;
+namespace RopDemo.Features.GetAccount;
 
-public class RopGetAccount : IEndpoint
+public class GetAccountRopEndpoint : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
@@ -15,7 +15,7 @@ public class RopGetAccount : IEndpoint
                         .Match(
                             account => Results.Ok(account),
                             result => ApiResults.Problem(result)))
-            .WithName(nameof(RopGetAccount))
+            .WithName(nameof(GetAccountRopEndpoint))
             .WithDisplayName("Get an account the railway oriented way.")
             .WithTags("Railway oriented")
             .Produces<Account>()

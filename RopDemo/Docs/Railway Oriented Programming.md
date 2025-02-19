@@ -34,7 +34,7 @@ and see sensible error messages when something goes wrong!*
 Imperative code can return early, but the code handling errors and exceptions tends 
 to obscure the happy path.
 
-[Example Imperative CreateAccount](../Features/Imperative.CreateAccount.cs)
+[Example Imperative CreateAccount Endpoint](../Features/CreateAccount/CreateAccountImperativeEndpoint.cs)
 
 Using exceptions for control flow is expansive. Is an expected exception still 
 an exception? Where to handle the exceptions? Global Exception Handling??? 
@@ -88,7 +88,7 @@ public record Error(string Code, string? Message = "")
 
 What would the same CreateAccount look like using the Result\<T\> monad?
 
-[Example Imperative CreateAccount with Result\<\T\>](../Features/Results.CreateAccount.cs)
+[Example Imperative CreateAccount with Result\<\T\>](../Features/CreateAccount/CreateAccountResultsEndpoint.cs)
 
 Still a lot of windows to jump out instead of using the door....
 
@@ -115,7 +115,7 @@ This is the essence of Railway Oriented Programming (ROP).
 Instead of implementing the `if(IsSuccess){}` logic in every method, the ROP extensions methods can be used to chain the 
 methods together.
 
-[Example Railway Oriented CreateAccount](../Features/Rop.CreateAccount.cs)
+[Example Railway Oriented CreateAccount](../Features/CreateAccount/CreateAccountRopEndpoint.cs)
 
 
 ### Bind

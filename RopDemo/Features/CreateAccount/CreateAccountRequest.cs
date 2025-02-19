@@ -1,6 +1,7 @@
 using RopDemo.Domain;
+using RopDemo.SharedKernel.Requests;
 
-namespace RopDemo.SharedKernel.Requests;
+namespace RopDemo.Features.CreateAccount;
 
 public sealed record CreateAccountRequest(
     string FirstName,

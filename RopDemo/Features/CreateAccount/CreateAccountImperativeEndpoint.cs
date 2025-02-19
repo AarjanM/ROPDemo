@@ -1,11 +1,11 @@
 using RopDemo.Domain;
+using RopDemo.Features.GetAccount;
 using RopDemo.Intrastructure.Data;
 using RopDemo.SharedKernel.Endpoints;
-using RopDemo.SharedKernel.Requests;
 
-namespace RopDemo.Features;
+namespace RopDemo.Features.CreateAccount;
 
-internal sealed class ImperativeCreateAccount : IEndpoint
+internal sealed class CreateAccountImperativeEndpoint : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
@@ -79,11 +79,11 @@ internal sealed class ImperativeCreateAccount : IEndpoint
 
                     // return CreatedAtRoute
                     return Results.CreatedAtRoute(
-                        nameof(ImperativeGetAccount),
+                        nameof(GetAccountImperativeEndpoint),
                         new { id = account.Id },
                         account);
                 })
-            .WithName(nameof(ImperativeCreateAccount))
+            .WithName(nameof(CreateAccountImperativeEndpoint))
             .WithDisplayName("Create an account the imperative way.")
             .WithTags("Imperative")
             .Produces<Account>(StatusCodes.Status201Created)

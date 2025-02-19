@@ -1,11 +1,11 @@
 using RopDemo.Domain;
+using RopDemo.Features.GetAccount;
 using RopDemo.Intrastructure.Data;
 using RopDemo.SharedKernel.Endpoints;
-using RopDemo.SharedKernel.Requests;
 
-namespace RopDemo.Features;
+namespace RopDemo.Features.CreateAccount;
 
-internal sealed class ResultsCreateAccount : IEndpoint
+internal sealed class CreateAccountResultsEndpoint : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
@@ -54,12 +54,12 @@ internal sealed class ResultsCreateAccount : IEndpoint
                 repository.SaveChanges();
                 
                 // return CreatedAtRoute
-                return Results.CreatedAtRoute(
-                    nameof(ResultsGetAccount),
+                return Microsoft.AspNetCore.Http.Results.CreatedAtRoute(
+                    nameof(GetAccountResultsEndpoint),
                     new { id = accountResult.Value.Id },
                     accountResult.Value);
             })
-            .WithName(nameof(ResultsCreateAccount))
+            .WithName(nameof(CreateAccountResultsEndpoint))
             .WithDisplayName("Create an account the imperative without exceptions way.")
             .WithTags("Results Imperative")
             .Produces<Account>(StatusCodes.Status201Created)
