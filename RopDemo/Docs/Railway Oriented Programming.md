@@ -159,6 +159,7 @@ error it encounters.
 
 ## ROP Refactor/Use example
 - [Example Refactor Account.Create](../Domain/Account.cs)
+- Add DomainEvent
 - Add Update Account method
 
 ## Learnings
