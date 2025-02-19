@@ -1,7 +1,7 @@
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace RopDemo.Common.Endpoints;
+namespace RopDemo.SharedKernel.Endpoints;
 
 public static class EndpointExtensions
 {

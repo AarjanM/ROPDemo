@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace RopDemo.Domain;
 
-public readonly record struct AccountId(Guid Value)
+public readonly record struct AccountId(Guid Value) : IEntityId
 {
     public static readonly AccountId Empty = new(Guid.Empty);
     public override string ToString() => Value.ToString();

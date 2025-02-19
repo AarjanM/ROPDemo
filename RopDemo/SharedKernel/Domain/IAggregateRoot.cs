@@ -1,4 +1,4 @@
-namespace RopDemo.Common.Domain;
+namespace RopDemo.SharedKernel.Domain;
 
 public interface IAggregateRoot
 {

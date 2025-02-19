@@ -3,7 +3,6 @@
 global using FluentValidation;
 global using FluentValidation.Results;
 global using Microsoft.AspNetCore.Mvc;
-global using RopDemo.Common.Domain;
-global using RopDemo.Common.Endpoints;
-global using RopDemo.Common.Results;
-global using RopDemo.Common.Validation;
+global using RopDemo.SharedKernel.Domain;
+global using RopDemo.SharedKernel.Results;
+global using RopDemo.SharedKernel.Validation;

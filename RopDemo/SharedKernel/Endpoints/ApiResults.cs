@@ -1,4 +1,4 @@
-namespace RopDemo.Common.Endpoints;
+namespace RopDemo.SharedKernel.Endpoints;
 
 public static class ApiResults
 {

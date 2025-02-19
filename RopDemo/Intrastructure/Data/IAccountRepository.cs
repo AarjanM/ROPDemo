@@ -1,6 +1,6 @@
 using RopDemo.Domain;
 
-namespace RopDemo.Services.Data;
+namespace RopDemo.Intrastructure.Data;
 
 public interface IAccountRepository
 {

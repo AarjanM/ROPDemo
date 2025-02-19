@@ -1,4 +1,4 @@
-namespace RopDemo.Common.Requests;
+namespace RopDemo.SharedKernel.Requests;
 
 public interface IRequest
 {

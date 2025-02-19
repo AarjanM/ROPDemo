@@ -1,4 +1,4 @@
-namespace RopDemo.Common.Validation;
+namespace RopDemo.SharedKernel.Validation;
 
 public static class FluentValidationExtensions
 {

@@ -1,4 +1,4 @@
-namespace RopDemo.Common.Results;
+namespace RopDemo.SharedKernel.Results;
 
 public static class ResultMatchExtensions
 {

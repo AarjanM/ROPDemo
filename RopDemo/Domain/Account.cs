@@ -1,6 +1,6 @@
 namespace RopDemo.Domain;
 
-public sealed class Account : IAggregateRoot
+public sealed class Account : AggregateRoot<AccountId>
 {
     private Account() {}
 

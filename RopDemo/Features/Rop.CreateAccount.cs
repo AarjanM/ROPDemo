@@ -1,6 +1,7 @@
-using RopDemo.Common.Requests;
 using RopDemo.Domain;
-using RopDemo.Services.Data;
+using RopDemo.Intrastructure.Data;
+using RopDemo.SharedKernel.Endpoints;
+using RopDemo.SharedKernel.Requests;
 
 namespace RopDemo.Features;
 
