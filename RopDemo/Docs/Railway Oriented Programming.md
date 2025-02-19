@@ -86,7 +86,7 @@ public record Error(string Code, string? Message = "")
 ```
 [My implementation of Result\<T\>](../SharedKernel/Results/Result.cs)
 
-What would the same CreateAccount look like using the Result\<T\> monad?
+What would the same `CreateAccount` look like using the Result\<T\> monad?
 
 [Example Imperative CreateAccount with Result\<\T\>](../Features/CreateAccount/CreateAccountResultsEndpoint.cs)
 

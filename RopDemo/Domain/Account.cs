@@ -24,23 +24,7 @@ public sealed class Account : AggregateRoot<AccountId>
         TelephoneNumber telephoneNumber,
         DateTime registrationDate)
     {
-        var validationResult = (firstName, lastName, emailAddress).Validate(v =>
-            {
-                v.RuleFor(request => firstName)
-                    .NotEmpty().WithMessage("First name is required.")
-                    .MaximumLength(MaxNameLength)
-                    .WithMessage("First name can not exceed {MaxLength} characters.");
-                v.RuleFor(request => lastName)
-                    .NotEmpty().WithMessage("Last name is required.")
-                    .MaximumLength(MaxNameLength)
-                    .WithMessage("Last name can not exceed {MaxLength} characters.");
-                v.RuleFor(request => request.emailAddress)
-                    .NotEmpty().WithMessage("Email address is required.")
-                    .MaximumLength(MaxEmailAddressLength)
-                    .WithMessage("Email address can not exceed {MaxLength} characters.")
-                    .EmailAddress().WithMessage("Invalid email address.");
-            }
-        );
+        var validationResult = (firstName, lastName, emailAddress).Validate(InputValidationRules);
         if (!validationResult.IsValid)
         {
             throw new ValidationException(validationResult.Errors);
@@ -64,23 +48,7 @@ public sealed class Account : AggregateRoot<AccountId>
         TelephoneNumber telephoneNumber,
         DateTime registrationDate)
     {
-        var validationResult = (firstName, lastName, emailAddress).ValidWhen(v =>
-            {
-                v.RuleFor(request => firstName)
-                    .NotEmpty().WithMessage("First name is required.")
-                    .MaximumLength(MaxNameLength)
-                    .WithMessage("First name can not exceed {MaxLength} characters.");
-                v.RuleFor(request => lastName)
-                    .NotEmpty().WithMessage("Last name is required.")
-                    .MaximumLength(MaxNameLength)
-                    .WithMessage("Last name can not exceed {MaxLength} characters.");
-                v.RuleFor(request => request.emailAddress)
-                    .NotEmpty().WithMessage("Email address is required.")
-                    .MaximumLength(MaxEmailAddressLength)
-                    .WithMessage("Email address can not exceed {MaxLength} characters.")
-                    .EmailAddress().WithMessage("Invalid email address.");
-            }
-        );
+        var validationResult = (firstName, lastName, emailAddress).ValidWhen(InputValidationRules);
         if (validationResult.IsFailure)
         {
             return Result.Failure<Account>(validationResult.Error);
@@ -95,5 +63,23 @@ public sealed class Account : AggregateRoot<AccountId>
             TelephoneNumber = telephoneNumber,
             RegistrationDate = registrationDate
         });
+    }
+
+    private static void InputValidationRules(
+        InlineValidator<(string firstName, string lastName, string emailAddress)> validator)
+    {
+        validator.RuleFor(request => request.firstName)
+            .NotEmpty().WithMessage("First name is required.")
+            .MaximumLength(MaxNameLength)
+            .WithMessage("First name can not exceed {MaxLength} characters.");
+        validator.RuleFor(request => request.lastName)
+            .NotEmpty().WithMessage("Last name is required.")
+            .MaximumLength(MaxNameLength)
+            .WithMessage("Last name can not exceed {MaxLength} characters.");
+        validator.RuleFor(request => request.emailAddress)
+            .NotEmpty().WithMessage("Email address is required.")
+            .MaximumLength(MaxEmailAddressLength)
+            .WithMessage("Email address can not exceed {MaxLength} characters.")
+            .EmailAddress().WithMessage("Invalid email address.");
     }
 }

@@ -54,7 +54,7 @@ internal sealed class CreateAccountResultsEndpoint : IEndpoint
                 repository.SaveChanges();
                 
                 // return CreatedAtRoute
-                return Microsoft.AspNetCore.Http.Results.CreatedAtRoute(
+                return Results.CreatedAtRoute(
                     nameof(GetAccountResultsEndpoint),
                     new { id = accountResult.Value.Id },
                     accountResult.Value);

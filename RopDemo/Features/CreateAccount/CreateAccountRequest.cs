@@ -9,11 +9,11 @@ public sealed record CreateAccountRequest(
     string EmailAddress,
     string? TelephoneNumber) : IRequest
 {
-    public ValidationResult Validate() => this.Validate(ConfigureValidator);
+    public ValidationResult Validate() => this.Validate(RequestValidationRules);
     
-    public Result WhenValid() => this.ValidWhen(ConfigureValidator);
+    public Result WhenValid() => this.ValidWhen(RequestValidationRules);
 
-    private static void ConfigureValidator(InlineValidator<CreateAccountRequest> validator)
+    private static void RequestValidationRules(InlineValidator<CreateAccountRequest> validator)
     {
         validator.RuleFor(request => request.FirstName)
             .NotEmpty().WithMessage("First name is required.")
